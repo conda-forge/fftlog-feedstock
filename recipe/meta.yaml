@@ -6,24 +6,24 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 049d420c6dbbc85b79a7682764228092cd395210b37c9c9ae909e645822210d2
 
 build:
-  number: 3
+  number: 4
   script:
     - {{ PYTHON }} -m pip install . -vv  # [unix]
     - {{ PYTHON }} -m pip install . -vv --global-option=build_ext --global-option --compiler=mingw32  # [win]
 
 requirements:
   build:
-    - {{ compiler('fortran') }}        # [unix]
-    - {{ compiler('m2w64_fortran') }}  # [win]
+    - {{ stdlib("c") }}
+    - {{ compiler("c") }}
+    - {{ compiler("fortran") }}
   host:
     - pip
     - numpy
     - python
-    - m2w64-gcc-libgfortran   # [win]
   run:
     - python
     - scipy
