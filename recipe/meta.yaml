@@ -28,14 +28,10 @@ requirements:
     - pip
     - numpy
     - python {{ python_min }}
-    - m2w64-gcc-libgfortran   # [win]
   run:
     - python >={{ python_min }}
     - numpy
     - scipy
-    - libgfortran-ng          # [not win]
-    - libgfortran             # [osx]
-    - {{ pin_compatible("m2w64-gcc-libgfortran", max_pin="x") }}   # [win]
 
 test:
   requires:
