@@ -1,4 +1,3 @@
-{% set python_min = '3.10' %}
 {% set name = "fftlog" %}
 {% set version = "0.2.2" %}
 
@@ -27,15 +26,15 @@ requirements:
     - charset-normalizer
     - pip
     - numpy
-    - python {{ python_min }}
+    - python
   run:
-    - python >={{ python_min }}
+    - python
     - numpy
     - scipy
 
 test:
   requires:
-    - python {{ python_min }}
+    - python
   imports:
     - fftlog
 
