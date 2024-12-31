@@ -1,16 +1,16 @@
 {% set name = "fftlog" %}
-{% set version = "0.2.1" %}
+{% set version = "0.2.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 049d420c6dbbc85b79a7682764228092cd395210b37c9c9ae909e645822210d2
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 965b41abc371471b4862e71081dac5954caa4db7f4abafe775d371f765548cae
 
 build:
-  number: 3
+  number: 0
   script:
     - {{ PYTHON }} -m pip install . -vv  # [unix]
     - {{ PYTHON }} -m pip install . -vv --global-option=build_ext --global-option --compiler=mingw32  # [win]
@@ -19,6 +19,7 @@ requirements:
   build:
     - {{ compiler('fortran') }}        # [unix]
     - {{ compiler('m2w64_fortran') }}  # [win]
+    - {{ stdlib("c") }}    # [win]
   host:
     - pip
     - numpy
