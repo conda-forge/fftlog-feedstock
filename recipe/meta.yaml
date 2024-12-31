@@ -27,7 +27,6 @@ requirements:
     - pip
     - numpy >=1.26
     - python
-    - m2w64-gcc-libgfortran   # [win]
   run:
     - python
     - numpy >=1.26
