@@ -1,3 +1,4 @@
+{% set python_min = '3.10' %}
 {% set name = "fftlog" %}
 {% set version = "0.2.2" %}
 
@@ -6,7 +7,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 965b41abc371471b4862e71081dac5954caa4db7f4abafe775d371f765548cae
 
 build:
@@ -17,25 +18,28 @@ build:
 
 requirements:
   build:
-    - {{ compiler('fortran') }}        # [unix]
-    - {{ compiler('m2w64_fortran') }}  # [win]
+    - {{ stdlib("c") }}
+    - {{ compiler("c") }}
+    - {{ compiler("fortran") }}
   host:
     - meson-python
     - wheel
     - charset_normalizer
     - pip
     - numpy
-    - python
+    - python {{ python_min }}
     - m2w64-gcc-libgfortran   # [win]
   run:
-    - python
+    - python >={{ python_min }}
     - numpy
     - scipy
     - libgfortran-ng          # [not win]
     - libgfortran             # [osx]
-    - {{ pin_compatible('m2w64-gcc-libgfortran', max_pin='x') }}   # [win]
+    - {{ pin_compatible("m2w64-gcc-libgfortran", max_pin="x") }}   # [win]
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - fftlog
 
@@ -44,7 +48,7 @@ about:
   license: CC0-1.0
   license_family: CC
   license_file: LICENSE
-  summary: 'Logarithmic Fast Fourier Transform'
+  summary: "Logarithmic Fast Fourier Transform"
   description: |
     A simple python-wrapper for the logarithmic FFT code FFTLog
     as presented in Appendix B of Hamilton (2000) and published at
