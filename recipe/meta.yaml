@@ -24,7 +24,7 @@ requirements:
   host:
     - meson-python
     - wheel
-    - charset_normalizer
+    - charset-normalizer
     - pip
     - numpy
     - python {{ python_min }}
