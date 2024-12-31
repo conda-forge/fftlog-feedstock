@@ -25,11 +25,11 @@ requirements:
     - wheel
     - charset-normalizer
     - pip
-    - numpy
+    - numpy >=1.26
     - python
   run:
     - python
-    - numpy
+    - numpy >=1.26
     - scipy
 
 test:
