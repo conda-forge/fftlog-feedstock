@@ -17,9 +17,9 @@ build:
 
 requirements:
   build:
-    - {{ compiler('fortran') }}        # [unix]
-    - {{ compiler('m2w64_fortran') }}  # [win]
-    - {{ stdlib("c") }}    # [win]
+    - {{ stdlib("c") }}
+    - {{ compiler("c") }}
+    - {{ compiler("fortran") }}
   host:
     - meson-python
     - wheel
@@ -27,15 +27,14 @@ requirements:
     - pip
     - numpy >=1.26
     - python
-    - m2w64-gcc-libgfortran   # [win]
   run:
     - python
+    - numpy >=1.26
     - scipy
-    - libgfortran-ng          # [not win]
-    - libgfortran             # [osx]
-    - {{ pin_compatible('m2w64-gcc-libgfortran', max_pin='x') }}   # [win]
 
 test:
+  requires:
+    - python
   imports:
     - fftlog
 
