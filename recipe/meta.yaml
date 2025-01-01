@@ -19,7 +19,8 @@ requirements:
   build:
     - {{ stdlib("c") }}
     - {{ compiler("c") }}
-    - {{ compiler("fortran") }}
+    - {{ compiler('fortran') }}        # [unix]
+    - {{ compiler('m2w64_fortran') }}  # [win]
   host:
     - meson-python
     - wheel
