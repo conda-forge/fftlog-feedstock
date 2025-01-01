@@ -21,8 +21,11 @@ requirements:
     - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ stdlib("c") }}    # [win]
   host:
+    - meson-python
+    - wheel
+    - charset-normalizer
     - pip
-    - numpy
+    - numpy >=1.26
     - python
     - m2w64-gcc-libgfortran   # [win]
   run:
@@ -37,17 +40,17 @@ test:
     - fftlog
 
 about:
-  home: https://github.com/prisae/fftlog
+  home: https://github.com/emsig/fftlog
   license: CC0-1.0
   license_family: CC
   license_file: LICENSE
-  summary: 'Logarithmic Fast Fourier Transform'
+  summary: "Logarithmic Fast Fourier Transform"
   description: |
     A simple python-wrapper for the logarithmic FFT code FFTLog
     as presented in Appendix B of Hamilton (2000) and published at
     casa.colorado.edu/~ajsh/FFTLog.
   doc_url: https://pyfftlog.readthedocs.io/
-  dev_url: https://github.com/prisae/fftlog
+  dev_url: https://github.com/emsig/fftlog
 
 extra:
   recipe-maintainers:
