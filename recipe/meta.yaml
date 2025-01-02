@@ -21,6 +21,7 @@ requirements:
     - {{ compiler("c") }}
     - {{ compiler("fortran") }}
   host:
+    - libpgmath
     - meson-python
     - wheel
     - charset-normalizer
